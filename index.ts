@@ -84,13 +84,10 @@ for (const column of columnData) {
 
 const newPrismaFile = oldFile.replace(/\ @map\(.*\)/g, "");
 
-const diff = diffLines(oldFile, newPrismaFile).filter(
-  (n) => n.removed === true || n.added === true
-);
-
 await mkdir("./build", { recursive: true }).then(() => {
   console.log("created build folder");
 });
+
 await writeFile("./build/schema.prisma", newPrismaFile, {
   encoding: "utf-8",
 }).then(() => {
