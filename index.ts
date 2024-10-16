@@ -79,7 +79,7 @@ let sqlString = ``;
 
 for (const column of columnData) {
   if (!column.oldName) continue;
-  sqlString += `ALTER TABLE '${column.modelName}' RENAME COLUMN '${column.oldName}' TO '${column.currentName}';\n`;
+  sqlString += `ALTER TABLE "${column.modelName}" RENAME COLUMN "${column.oldName}" TO "${column.currentName}";\n`;
 }
 
 const newPrismaFile = oldFile.replace(/\ @map\(.*\)/g, "");
