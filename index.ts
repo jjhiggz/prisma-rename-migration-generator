@@ -88,15 +88,16 @@ const diff = diffLines(oldFile, newPrismaFile).filter(
   (n) => n.removed === true || n.added === true
 );
 
-diff.forEach((part) => {
-  if (part.added) console.log(part.value);
-  if (part.removed) console.error(part.value);
+await mkdir("./build", { recursive: true }).then(() => {
+  console.log("created build folder");
 });
-
-await mkdir("./newshit", { recursive: true });
-await writeFile("./newshit/schema.prisma", newPrismaFile, {
+await writeFile("./build/schema.prisma", newPrismaFile, {
   encoding: "utf-8",
+}).then(() => {
+  console.log("wrote new schema.prisma in build/schema.prisma");
 });
-await writeFile("./newshit/migration.sql", sqlString, {
+await writeFile("./build/migration.sql", sqlString, {
   encoding: "utf-8",
+}).then(() => {
+  console.log("wrote new migration.sql in build/migration.sql");
 });
