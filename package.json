@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/diff": "^5.2.3",
+    "@types/node": "^22.7.6",
     "diff": "^7.0.0",
     "remeda": "^2.15.0",
     "text-file-diff": "^1.4.8",
